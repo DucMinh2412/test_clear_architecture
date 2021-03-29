@@ -3,7 +3,9 @@ package com.example.test_clear_architecture.di.component
 import com.example.test_clear_architecture.di.TestClearArchitecture
 import com.example.test_clear_architecture.di.builder.ActivityBuilder
 import com.example.test_clear_architecture.di.builder.FragmentBuilder
-import com.example.test_clear_architecture.di.module.RetrofitModule
+import com.example.test_clear_architecture.di.module.RepositoryModule
+import com.example.test_clear_architecture.di.module.ApiModule
+import com.example.test_clear_architecture.di.module.AppModule
 import com.example.test_clear_architecture.di.module.ViewModelModule
 import dagger.BindsInstance
 import dagger.Component
@@ -17,9 +19,11 @@ import javax.inject.Singleton
 @Component(
     modules = [
         (AndroidInjectionModule::class),
-        (RetrofitModule::class),
-        (ActivityBuilder::class),
+        (ApiModule::class),
+        (RepositoryModule::class),
+        (AppModule::class),
         (ViewModelModule::class),
+        (ActivityBuilder::class),
         (FragmentBuilder::class),
     ]
 )

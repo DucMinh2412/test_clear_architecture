@@ -12,7 +12,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import butterknife.ButterKnife
 import butterknife.Unbinder
-import com.example.test_clear_architecture.MainActivity
+import com.example.test_clear_architecture.ui.main.MainActivity
 import com.example.test_clear_architecture.base.progress_dialog.TestProgressDialog
 import com.google.android.material.snackbar.Snackbar
 import dagger.android.AndroidInjection
@@ -103,8 +103,5 @@ abstract class BaseActivity<B : ViewDataBinding, V : BaseViewModel<*>> : AppComp
         finish()
     }
 
-    override fun showWarningDialog(resId: Int) {
-        showWarningDialog(getString(resId))
-    }
 
 }

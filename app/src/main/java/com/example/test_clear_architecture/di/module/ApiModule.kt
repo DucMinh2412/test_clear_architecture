@@ -1,6 +1,8 @@
 package com.example.test_clear_architecture.di.module
 
 import com.example.data.remote.API
+import com.example.data.remote.ApiHelper
+import com.example.data.remote.ApiHelperImp
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -13,7 +15,7 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
-class RetrofitModule {
+class ApiModule {
 
     @Provides
     @Singleton
@@ -29,7 +31,7 @@ class RetrofitModule {
             .build()
 
         return Retrofit.Builder()
-            .baseUrl("")
+            .baseUrl("https://api.mocki.io")
             .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -42,5 +44,11 @@ class RetrofitModule {
     @Singleton
     internal fun provideApi(retrofit: Retrofit): API {
         return retrofit.create(API::class.java)
+    }
+
+    @Provides
+    @Singleton
+    internal fun provideApiHelper(apiHelperImp: ApiHelperImp): ApiHelper {
+        return apiHelperImp
     }
 }
